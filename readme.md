@@ -1,9 +1,21 @@
-# ansible-docker
+# Ansible Docker Container
 
-A docker container with Ansible `2.5.7` installed via pip.
+A docker container with Ansible `2.5.7` installed.
 
-Mount your Ansible repo and use it like a command line application:
+Support for connecting to Windows instances over WinRM is included.
 
-`docker run --rm -ti matthodge/ansible ansible --version`
+## Build the container
 
-Available on Docker Hub: [https://hub.docker.com/r/matthodge/ansible/](https://hub.docker.com/r/matthodge/ansible/)
+```bash
+docker build -t matthodge/ansible:latest .
+```
+
+## Use the container
+
+```bash
+# Get the version of Ansible from inside the container
+docker run --rm -ti matthodge/ansible ansible-playbook --version
+
+# Run a playbook in the ./ansible/playbooks folder.
+docker run -v $$PWD/ansible:/ansible --rm -ti matthodge/ansible ansible-playbook -i ansible/inventory.ini ansible/playbooks/ad.yaml -vvv
+```
