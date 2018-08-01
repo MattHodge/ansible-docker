@@ -1,18 +1,3 @@
-# FROM ubuntu:14.04.5
-#
-# RUN apt-get update -y && \
-#   apt-get install software-properties-common -y && \
-#   apt-add-repository ppa:ansible/ansible -y && \
-#   apt-get update && \
-#   apt-get install ansible python-pip tree git python-dev libkrb5-dev krb5-user -y && \
-#   pip install pywinrm xmltodict kerberos requests_kerberos && \
-#   apt-get clean && \
-#   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-#
-# WORKDIR /ansible
-#
-
-#FROM python:2.7-alpine
 FROM alpine:3.4
 
 RUN echo "===> Installing sudo to emulate normal OS behavior..."  && \
@@ -31,7 +16,7 @@ RUN echo "===> Installing sudo to emulate normal OS behavior..."  && \
     \
     \
     echo "===> Installing Ansible..."  && \
-    pip install ansible==2.2.0.0         && \
+    pip install ansible==2.5.7         && \
     \
     \
     echo "===> Installing pip packages ..."  && \
